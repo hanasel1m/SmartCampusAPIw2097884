@@ -5,10 +5,17 @@
 package com.hanaselim.smartcampus.resource;
 
 import com.hanaselim.smartcampus.database.DataStore;
+import com.hanaselim.smartcampus.exception.DataNotFoundException;
+import com.hanaselim.smartcampus.exception.RoomNotEmptyException;
 import com.hanaselim.smartcampus.model.Room;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Collection;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+
 
 /**
  *
@@ -26,14 +33,38 @@ public class RoomResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public String addRoom(Room room) {
+        room.getSensorIds().add("TEMP-001");
         DataStore.rooms.put(room.getId(), room);
         return "Room added successfully";
+        
     }
 
     @GET
     @Path("/{roomId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Room getRoom(@PathParam("roomId") String roomId) {
-        return DataStore.rooms.get(roomId);
+        Room room = DataStore.rooms.get(roomId);
+
+        if (room == null) {
+            throw new DataNotFoundException("Room with ID " + roomId + " not found");
+        }
+        return room;
+    }
+    
+    @DELETE
+    @Path("/{roomId}")
+    public Response deleteRoom(@PathParam("roomId") String roomId){
+        Room room = DataStore.rooms.get(roomId);
+        
+        if(room == null){
+            throw new DataNotFoundException("Room with ID " + roomId + " not found");
+        }
+        
+        if(!room.getSensorIds().isEmpty()){
+            throw new RoomNotEmptyException("Room cannot be deleted. Sensors are still assigned.");
+        }
+        
+        DataStore.rooms.remove(roomId);
+        return Response.status(Response.Status.NO_CONTENT).build(); 
     }
 }

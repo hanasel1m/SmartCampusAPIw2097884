@@ -8,6 +8,7 @@ import com.hanaselim.smartcampus.model.ErrorMessage;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
@@ -20,9 +21,12 @@ public class RoomNotEmptyExceptionMapper implements ExceptionMapper<RoomNotEmpty
         
         ErrorMessage error = new ErrorMessage(
                 ex.getMessage(),
-                409
+                409,
+                "Room still has sensors assigned"
         );
         
-        return Response.status(Response.Status.CONFLICT).entity(error).build();
-    }
+return Response.status(Response.Status.CONFLICT)
+        .entity(error)
+        .type(MediaType.APPLICATION_JSON)
+        .build();    }
 }

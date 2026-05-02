@@ -9,29 +9,41 @@ package com.hanaselim.smartcampus.model;
  * @author Dell
  */
 public class ErrorMessage {
-    private String message;
-    private int status;
+    private String errorMessage;
+    private int errorCode;
+    private String documentation;
     
-    public ErrorMessage(){}
-    
-    public ErrorMessage(String message, int status){
-        this.message = message;
-        this.status = status;
+    public ErrorMessage(){
+    }
+
+    public ErrorMessage(String errorMessage, int errorCode, String documentation) {
+        this.errorMessage = errorMessage;
+        this.errorCode = errorCode;
+        this.documentation = documentation;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    public int getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    public String getDocumentation() {
+        return documentation;
+    }
+
+    public void setDocumentation(String documentation) {
+        this.documentation = documentation;
     }
     
-    public String getMessage(){
-        return message;
-    }
-    
-    public void setMessage(String message){
-        this.message = message;
-    }
-    
-    public int getStatus() {
-        return status;
-    }
-    
-    public void setStatus (int status){
-        this.status=status;
-    }
 }
