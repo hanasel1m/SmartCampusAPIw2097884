@@ -5,6 +5,7 @@
 package com.hanaselim.smartcampus.exception;
 
 import com.hanaselim.smartcampus.model.ErrorMessage;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
@@ -23,6 +24,6 @@ public class LinkedResourceNotFoundExceptionMapper implements ExceptionMapper<Li
                 "Linked resource not found"
         );
         
-        return Response.status(422).entity(error).type(javax.ws.rs.core.MediaType.APPLICATION_JSON).build();
+        return Response.status(422).entity(error).type(MediaType.APPLICATION_JSON).build();
     }
 }

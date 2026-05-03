@@ -32,10 +32,10 @@ public class RoomResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public String addRoom(Room room) {
-        room.getSensorIds().add("TEMP-001");
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addRoom(Room room) {
         DataStore.rooms.put(room.getId(), room);
-        return "Room added successfully";
+        return Response.status(Response.Status.CREATED).entity(room).build();
         
     }
 

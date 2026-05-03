@@ -27,6 +27,7 @@ public class SensorResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response addSensor(Sensor sensor) {
         
         if (sensor == null || sensor.getRoomId() == null) {
@@ -41,7 +42,7 @@ public class SensorResource {
         DataStore.sensors.put(sensor.getId(), sensor);
         DataStore.rooms.get(sensor.getRoomId()).getSensorIds().add(sensor.getId());
 
-        return Response.status(Response.Status.CREATED).build();
+        return Response.status(Response.Status.CREATED).entity(sensor).header("Location", "/api/sensors/" + sensor.getId()).build();
     }
 
     @GET
