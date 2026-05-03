@@ -15,19 +15,24 @@ import javax.ws.rs.ext.Provider;
 
 /**
  *
- * @author Dell
+ * global filter that intercepts all incoming requests and outgoing responses to API
+ * 
+ * used for logging to help debug and monitor
  */
 @Provider
 public class LoggingFilter implements ContainerRequestFilter, ContainerResponseFilter{
     
+    //logger used to print messages to server console
     private static final Logger LOGGER = Logger.getLogger(LoggingFilter.class.getName());
     
+    //runs before the request reaches any resource, logs http method and requested url
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException{
         LOGGER.info("Request: "+requestContext.getMethod()+" "+requestContext.getUriInfo().getRequestUri());
         
     }
     
+    //runs after response is created and logs http status code returned to the client
     @Override
     public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException{
         LOGGER.info("Response Status: "+ responseContext.getStatus());

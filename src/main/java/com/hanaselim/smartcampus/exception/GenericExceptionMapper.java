@@ -11,7 +11,9 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 /**
  *
- * @author Dell
+ * global fallback exception handler
+ * (prevents exposing internal stack trace (security risk))
+ *  & returns safe, generic error message to client
  */
 @Provider
 public class GenericExceptionMapper implements ExceptionMapper<Throwable>{

@@ -6,7 +6,8 @@ package com.hanaselim.smartcampus.exception;
 
 /**
  *
- * @author Dell
+ * thrown when attempting operation on a unavailable sensor (under maintenance)
+ * enforces operational constraints of system
  */
 public class SensorUnavailableException extends RuntimeException{
     public SensorUnavailableException (String message){

@@ -6,12 +6,13 @@ package com.hanaselim.smartcampus.model;
 
 /**
  *
- * @author Dell
+ * sensor-reading model
+ * represents a single reading recorded by a sensor
  */
 public class SensorReading {
-    private String id;
-    private long timestamp;
-    private double value;
+    private String id; // Reading id
+    private long timestamp; // time of reading
+    private double value; //measured value
     
     public SensorReading(){
         

@@ -12,12 +12,16 @@ import javax.ws.rs.ext.Provider;
 
 /**
  *
- * @author Dell
+ * maps data not found exception to http 404 (not found) response
+ * provider tells jax-rs to automatically register class
+ * (no raw java erorrs exposed, clients receive structured json responses)
  */
 @Provider
 public class DataNotFoundExceptionMapper implements ExceptionMapper<DataNotFoundException> {
     @Override
     public Response toResponse(DataNotFoundException ex){
+        
+        //error message response to data not found exception
         ErrorMessage error = new ErrorMessage(
                 ex.getMessage(),
                 404,

@@ -6,7 +6,8 @@ package com.hanaselim.smartcampus.exception;
 
 /**
  *
- * @author Dell
+ * thrown when attempting to delete room with sensors
+ *  no orphan sensors
  */
 public class RoomNotEmptyException extends RuntimeException {
     public RoomNotEmptyException (String message){

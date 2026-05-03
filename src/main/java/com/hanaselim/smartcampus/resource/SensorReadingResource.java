@@ -19,8 +19,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
- *
- * @author Dell
+ * sensor reading resource : sub-resource handling readings for a specific sensor
+ * 
  */
 public class SensorReadingResource {
     
@@ -30,12 +30,14 @@ public class SensorReadingResource {
         this.sensorId=sensorId;
     }
     
+    //get readings for a sensor
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<SensorReading> getReadings() {
         return DataStore.readings.getOrDefault(sensorId, new ArrayList<>());
     }
     
+    //post new reading
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

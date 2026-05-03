@@ -13,10 +13,18 @@ import java.util.Map;
 
 /**
  *
- * @author Dell
+ * data storage for application, replaces database
+ * all data stored using java collections
+ * static vars ensure shared state across requests
+ * 
  */
 public class DataStore {
+    // stores all rooms (room id -> room)
     public static Map<String, Room> rooms = new HashMap<>();
+    
+    // stores all sensors (sensor id -> sensor)
     public static Map<String, Sensor> sensors = new HashMap<>();
+    
+    //stores readings per sensor (sensor id -> list of readings.)
     public static Map<String, List<SensorReading>> readings = new HashMap<>();
 }

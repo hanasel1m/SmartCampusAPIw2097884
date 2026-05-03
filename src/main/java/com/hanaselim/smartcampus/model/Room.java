@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.hanaselim.smartcampus.model;
 
 import java.util.ArrayList;
@@ -9,15 +6,17 @@ import java.util.List;
 
 /**
  *
- * @author Dell
+ * room model, represents physical room in the smart campus
+ * each room can have multiple sensors linked to it
  */
 public class Room {
 
-    private String id;
-    private String name;
-    private int capacity;
-    private List<String> sensorIds = new ArrayList<>();
+    private String id; // unique room id
+    private String name; // room name
+    private int capacity; // maximum room capacity
+    private List<String> sensorIds = new ArrayList<>(); //list of sensor ids in this room
 
+    //default constructor required for json deserialisation
     public Room() {
 
     }

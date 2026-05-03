@@ -19,17 +19,19 @@ import javax.ws.rs.PathParam;
 
 /**
  *
- * @author Dell
+ * room resource : handles all operations related to rooms
  */
 @Path("/rooms")
 public class RoomResource {
 
+    //returns all rooms
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Collection<Room> getAllRooms() {
         return DataStore.rooms.values();
     }
 
+    // creates a new room
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -39,6 +41,7 @@ public class RoomResource {
         
     }
 
+    //returns room by id
     @GET
     @Path("/{roomId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -51,6 +54,7 @@ public class RoomResource {
         return room;
     }
     
+    // deletes room if it has no sensors
     @DELETE
     @Path("/{roomId}")
     public Response deleteRoom(@PathParam("roomId") String roomId){

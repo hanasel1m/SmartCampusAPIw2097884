@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.hanaselim.smartcampus.exception;
 
 import com.hanaselim.smartcampus.model.ErrorMessage;
@@ -12,7 +9,8 @@ import javax.ws.rs.ext.Provider;
 
 /**
  *
- * @author Dell
+ * maps "sensor unavailable exception" to http 403 forbidden
+ * 403: request understood, operation not allowed due to system state
  */
 @Provider
 public class SensorUnavailableExceptionMapper implements ExceptionMapper<SensorUnavailableException>{

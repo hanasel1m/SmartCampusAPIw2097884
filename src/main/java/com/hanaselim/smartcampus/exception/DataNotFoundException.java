@@ -6,7 +6,9 @@ package com.hanaselim.smartcampus.exception;
 
 /**
  *
- * @author Dell
+ * custom exception for cases where requested resource doesn't exist (room not found, sensor not found)
+ * clean separation between business logic and http responses 
+ * (actual http response handled by an exception mapper)
  */
 public class DataNotFoundException extends RuntimeException {
     public DataNotFoundException(String message){

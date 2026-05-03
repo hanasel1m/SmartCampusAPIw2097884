@@ -20,11 +20,13 @@ import javax.ws.rs.core.Response;
 
 /**
  *
- * @author Dell
+ * sensor resource: handles all sensor operations
+ * 
  */
 @Path("/sensors")
 public class SensorResource {
 
+    // creates a sensor and links it to a room
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -42,9 +44,10 @@ public class SensorResource {
         DataStore.sensors.put(sensor.getId(), sensor);
         DataStore.rooms.get(sensor.getRoomId()).getSensorIds().add(sensor.getId());
 
-        return Response.status(Response.Status.CREATED).entity(sensor).header("Location", "/api/sensors/" + sensor.getId()).build();
+        return Response.status(Response.Status.CREATED).entity(sensor).header("Location", "/api/v1/sensors/" + sensor.getId()).build();
     }
 
+    // optionally filter sensors by type
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Collection<Sensor> getSensors(@QueryParam("type") String type) {
@@ -56,6 +59,7 @@ public class SensorResource {
         return DataStore.sensors.values().stream().filter(s -> s.getType().equalsIgnoreCase(type)).toList();
     }
     
+    // sub-resource locator for sensor readings
     @Path("/{sensorId}/readings")
     public SensorReadingResource getReadingResource(@PathParam("sensorId") String sensorId) {
         return new SensorReadingResource(sensorId);

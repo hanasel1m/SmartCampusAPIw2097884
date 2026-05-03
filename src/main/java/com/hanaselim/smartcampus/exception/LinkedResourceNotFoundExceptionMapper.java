@@ -11,8 +11,9 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 /**
- *
- * @author Dell
+ * maps "linked resource not found exception" to http 422
+ * 422: request format valid but reference invalid
+ * 
  */
 @Provider
 public class LinkedResourceNotFoundExceptionMapper implements ExceptionMapper<LinkedResourceNotFoundException>{

@@ -6,14 +6,14 @@ package com.hanaselim.smartcampus.model;
 
 /**
  *
- * @author Dell
+ * sensor model, represents sensor device installed in a room
  */
 public class Sensor {
-    private String id;
-    private String type;
-    private String status;
-    private double currentValue;
-    private String roomId;
+    private String id; // unique sensor id
+    private String type; // sensor type (eg. temperature)
+    private String status; // active / maintenance 
+    private double currentValue; //latest reading value
+    private String roomId; // id of room this sensor belongs to
     
     public Sensor(){}
 

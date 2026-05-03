@@ -13,7 +13,9 @@ import java.util.Map;
 
 /**
  *
- * @author Dell
+ * root endpoint that provides API metadata
+ * helps users discover available endpoints
+ * 
  */
 @Path("/")
 public class DiscoveryResource {
@@ -24,9 +26,11 @@ public class DiscoveryResource {
 
         Map<String, Object> response = new HashMap<>();
 
+        //api version and contact info
         response.put("version", "v1");
         response.put("contact", "w2097884@westminster.ac.uk");
 
+        //available resources
         Map<String, String> resources = new HashMap<>();
         resources.put("rooms", "/api/v1/rooms");
         resources.put("sensors", "/api/v1/sensors");

@@ -12,7 +12,8 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author Dell
+ * maps "room not empty exception" to http 409 conflict 
+ * (conflict with current resource state)
  */
 @Provider
 public class RoomNotEmptyExceptionMapper implements ExceptionMapper<RoomNotEmptyException>{

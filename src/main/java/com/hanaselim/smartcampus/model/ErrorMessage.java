@@ -6,12 +6,12 @@ package com.hanaselim.smartcampus.model;
 
 /**
  *
- * @author Dell
+ * error message model used by exception mappers for all API error responses
  */
 public class ErrorMessage {
-    private String errorMessage;
-    private int errorCode;
-    private String documentation;
+    private String errorMessage; //error description
+    private int errorCode; //http status code
+    private String documentation; //additional explanation of error
     
     public ErrorMessage(){
     }
